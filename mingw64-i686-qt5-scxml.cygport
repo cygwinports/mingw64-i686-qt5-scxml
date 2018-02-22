@@ -2,7 +2,7 @@ TOOLCHAIN_TARGET="i686-w64-mingw32"
 inherit toolchain qt5-qmake
 
 NAME="mingw64-i686-qt5-scxml"
-VERSION=5.9.3
+VERSION=5.9.4
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Qt C++ application framework (SCXML library) for Win32 toolchain"
@@ -17,6 +17,8 @@ SRC_DIR="qtscxml-opensource-src-${VERSION}"
 
 # this is mostly cross-compiled, the native tools are only a small part
 RESTRICT="debuginfo"
+CFLAGS+=" -fno-stack-protector"
+CXXFLAGS+=" -fno-stack-protector"
 
 src_install() {
 	local x xname
